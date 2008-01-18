@@ -1,0 +1,12 @@
+History.txt
+Manifest.txt
+README.txt
+Rakefile
+examples/encode_flv.rb
+examples/thumbnail.rb
+lib/rtranscoder.rb
+lib/rtranscoder/version.rb
+lib/rtranscoder/ffmpeg.rb
+lib/rtranscoder/ffmpeg/ffmpeg.rb
+lib/rtranscoder/ffmpeg/ffmpeg_task.rb
+test/test_rtranscoder.rb
