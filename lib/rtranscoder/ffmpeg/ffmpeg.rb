@@ -31,7 +31,8 @@ module RTranscoder
     end
 
     #
-    # Runs +ffmpeg+ with the given _options_ and _block_ using FFmpegTask.
+    # Runs the +ffmpeg+ program with the given _options_ and the given
+    # _block_ using FFmpegTask.
     #
     def encode(options={},&block)
       run_with_task(FFmpegTask.new(options,&block))
