@@ -15,6 +15,7 @@ to Ruby classes and methods for your convenience.
 == FEATURES/PROBLEMS:
   
 * Supports FFmpeg.
+* Supports MPlayer.
 * Supports MEncoder.
 
 == REQUIREMENTS:
