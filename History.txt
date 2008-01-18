@@ -2,5 +2,6 @@
 
 * Initial release.
  * Supports FFmpeg
+ * Supports MPlayer
  * Supports MEncoder
 
