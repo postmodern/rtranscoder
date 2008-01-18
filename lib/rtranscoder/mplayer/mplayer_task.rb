@@ -109,5 +109,7 @@ module RTranscoder
     # Video Output Drivers
     long_option :flag => '-vo', :name => :video_output
 
+    non_option :tailing => true, :name => :media
+
   end
 end

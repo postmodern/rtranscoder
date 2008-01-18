@@ -44,7 +44,8 @@ module RTranscoder
     codec_options :mpeg
     codec_options :lavf
 
-    non_option :leading => true, :name => :input
+    non_option :tailing => true, :name => :input
+    non_option :tailing => true, :name => :output_file
     non_option :tailing => true, :name => :smb_output
 
   end
