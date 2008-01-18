@@ -3,27 +3,6 @@ require 'rtranscoder/mplayer/mplayer_common_task'
 module RTranscoder
   class MEncoderTask < MPlayerCommonTask
 
-    # Decoding/Filtering options
-    long_option :flag => '-ac', :name => :audio_codecs # TODO: add formating
-    long_option :flag => '-af-adv', :name => :advanced_audio_filtering # TODO: add formating
-    long_option :flag => '-afm', :name => :audio_codec_families # TODO: add formating
-    long_option :flag => '-aspect', :name => :aspect_ratio
-    long_option :flag => '-noaspect', :name => :disable_aspect_ratio
-    long_option :flag => '-field-dominance'
-    long_option :flag => '-flip'
-    long_option :flag => '-lavdopts', :name => :libavcodec # TODO: add formating
-    long_option :flag => '-noslices', :name => :disable_slices
-    long_option :flag => '-nosound', :name => :disable_sound
-    long_option :flag => '-novideo', :name => :disable_video
-    long_option :flag => '-pp', :name => :dll_postprocess_level
-    long_option :flag => '-pphelp', :name => :postprocess_help
-    long_option :flag => '-ssf', :name => :software_scaler
-    long_option :flag => '-stereo'
-    long_option :flag => '-sws', :name => :software_scaler_algorithm
-    long_option :flag => '-vc', :name => :video_codecs
-    long_option :flag => '-vfm', :name => :video_codec_families
-    long_option :flag => '-xvidopts', :name => :xvid_decoding
-
     # General encoding options
     long_option :flag => '-audio-delay'
     long_option :flag => '-audio-density'
