@@ -1,4 +1,5 @@
 require 'rtranscoder/mplayer/mplayer_task'
+require 'rtranscoder/extensions'
 
 require 'rprogram/program'
 
