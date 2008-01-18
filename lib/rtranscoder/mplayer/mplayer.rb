@@ -7,14 +7,25 @@ module RTranscoder
 
     name_program :mplayer
 
+    #
+    # Creates a new MPlayer object with the specified _path_ of the
+    # +mplayer+ program.
+    #
     def initialize(path)
       super(path)
     end
 
-    def self.encode(options={},&block)
-      self.create.encode(options,&block)
+    #
+    # See MPlayer#play.
+    #
+    def self.play(options={},&block)
+      self.create.play(options,&block)
     end
 
+    #
+    # Runs the +mplayer+ program with the given _options_ and the given
+    # _block_ using MPlayerTask.
+    #
     def play(options={},&block)
       run_with_task(MPlayerTask.new(options,&block))
     end
