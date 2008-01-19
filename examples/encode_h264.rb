@@ -1,11 +1,11 @@
-require 'rtranscoder/mplayer'
+require 'rtranscoder/mencoder'
 
 include RTranscoder
 
 #
 # Encode an input AVI file using the x264 codec.
 # Equivalent to:
-#   mencoder input.avi -o output.avi -ovc x264 -x264encopts bitrate=3000
+#   $ mencoder input.avi -o output.avi -ovc x264 -x264encopts bitrate=3000
 #     pass=1 nr=2000
 #
 MEncoder.encode do |mencoder|
