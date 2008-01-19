@@ -3,6 +3,16 @@ require 'rprogram/task'
 module RTranscoder
   class MPlayerCommonTask < RProgram::Task
 
+    protected
+
+    def self.sub_options(opts={})
+      long_option :flag => opts[:flag], :name => opts[:name], :separator => ':', :sub_options => true
+    end
+
+    def self.priority_list(opts={})
+      long_option :flag => opts[:flag], :name => opts[:name], :separator => ','
+    end
+
     # General options
     long_option :flag => '-codecs-file'
     long_option :flag => '-include'
@@ -31,7 +41,7 @@ module RTranscoder
     long_option :flag => '-nocache'
     long_option :flag => '-cache-min', :name => :cache_minimum
     long_option :flag => '-cache-seek-min', :name => :cache_seek_minimum
-    long_option :flag => '-cdda'
+    sub_options :flag => '-cdda'
     long_option :flag => '-cdrom-device'
     long_option :flag => '-channels'
     long_option :flag => '-chapter'
@@ -54,8 +64,8 @@ module RTranscoder
     long_option :flag => '-noidx', :name => :skip_index
     long_option :flag => '-ipv4-only-proxy'
     long_option :flag => '-loadidx', :name => :load_index
-    long_option :flag => '-mc' # TODO: add formating
-    long_option :flag => '-mf' # TODO: add formating
+    long_option :flag => '-mc'
+    sub_options :flag => '-mf'
     long_option :flag => '-ni', :name => :non_interleaved_avi_parser
     long_option :flag => '-nobps', :name => :disable_bps
     long_option :flag => '-noextbased', :name => :disable_ext_based_demuxer
@@ -63,10 +73,10 @@ module RTranscoder
     long_option :flag => '-prefer-ipv4'
     long_option :flag => '-prefer-ipv6'
     long_option :flag => '-psprobe', :name => :probe_into_stream
-    long_option :flag => '-pvr' # TODO: add formating
-    long_option :flag => '-radio' # TODO: add formating
-    long_option :flag => '-rawaudio', :name => :raw_audio # TODO: add formating
-    long_option :flag => '-rawvideo', :name => :raw_video # TODO: add formating
+    sub_options :flag => '-pvr'
+    sub_options :flag => '-radio'
+    sub_options :flag => '-rawaudio', :name => :raw_audio
+    sub_options :flag => '-rawvideo', :name => :raw_video
     long_option :flag => '-rtsp-port'
     long_option :flag => '-rtsp-destination'
     long_option :flag => '-rtsp-stream-over-tcp'
@@ -78,22 +88,22 @@ module RTranscoder
     long_option :flag => '-tskeepbroken', :name => :ignore_broken_ts_packets
     long_option :flag => '-tsprobe', :name => :probe_into_ts_stream
     long_option :flag => '-tsprog', :name => :ts_program
-    long_option :flag => '-tv' # TODO: add formating
-    long_option :flag => '-tvscan', :name => :tv_scan # TODO: add formating
+    sub_options :flag => '-tv'
+    sub_options :flag => '-tvscan', :name => :tv_scan
     long_option :flag => '-user', :name => :http_username
     long_option :flag => '-user-agent', :name => :http_user_agent
     long_option :flag => '-vid', :name => :video_channel
     long_option :flag => '-vivo', :name => :vivo_audio_parameters
 
     # Decoding/Filtering options
-    long_option :flag => '-ac', :name => :audio_codecs # TODO: add formating
-    long_option :flag => '-af-adv', :name => :advanced_audio_filtering # TODO: add formating
-    long_option :flag => '-afm', :name => :audio_codec_families # TODO: add formating
+    priority_list :flag => '-ac', :name => :audio_codecs
+    sub_options :flag => '-af-adv', :name => :advanced_audio_filtering
+    priority_list :flag => '-afm', :name => :audio_codec_families
     long_option :flag => '-aspect', :name => :aspect_ratio
     long_option :flag => '-noaspect', :name => :disable_aspect_ratio
     long_option :flag => '-field-dominance'
     long_option :flag => '-flip'
-    long_option :flag => '-lavdopts', :name => :libavcodec # TODO: add formating
+    sub_options :flag => '-lavdopts', :name => :libavcodec
     long_option :flag => '-noslices', :name => :disable_slices
     long_option :flag => '-nosound', :name => :disable_sound
     long_option :flag => '-novideo', :name => :disable_video
@@ -102,18 +112,19 @@ module RTranscoder
     long_option :flag => '-ssf', :name => :software_scaler
     long_option :flag => '-stereo'
     long_option :flag => '-sws', :name => :software_scaler_algorithm
-    long_option :flag => '-vc', :name => :video_codecs
-    long_option :flag => '-vfm', :name => :video_codec_families
-    long_option :flag => '-xvidopts', :name => :xvid_decoding
+    priority_list :flag => '-vc', :name => :video_codecs
+    priority_list :flag => '-vfm', :name => :video_codec_families
+    sub_options :flag => '-xvidopts', :name => :xvid_decoding
+    long_option :flag => '-zoom'
 
-    # Audio filters
-    long_option :flag => '-af', :name => :audio_filters
+    # Audio Filters
+    sub_options :flag => '-af', :name => :audio_filters
 
     # Video Filters
-    long_option :flag => '-vf', :name => :video_filters
-    long_option :flag => '-vf-add', :name => :append_video_filters
-    long_option :flag => '-vf-pre', :name => :prepend_video_filters
-    long_option :flag => '-vf-del', :name => :delete_video_filters
+    sub_options :flag => '-vf', :name => :video_filters
+    long_option :flag => '-vf-add', :name => :append_video_filters, :separator => ','
+    long_option :flag => '-vf-pre', :name => :prepend_video_filters, :separator => ','
+    long_option :flag => '-vf-del', :name => :delete_video_filters, :separator => ','
     long_option :flag => '-vf-clr', :name => :clear_video_filters
 
   end

@@ -3,7 +3,7 @@ require 'rtranscoder/mplayer/mplayer_common_task'
 module RTranscoder
   class MPlayerTask < MPlayerCommonTask
 
-    # Player Options
+    # Player options
     long_option :flag => '-autoq', :name => :auto_quality
     long_option :flag => '-autosync', :name => :auto_sync
     long_option :flag => '-benchmark'
@@ -48,17 +48,17 @@ module RTranscoder
     long_option :flag => '-softsleep', :name => :soft_sleep
     long_option :flag => '-sstep', :name => :skip_step
 
-    # Audio Output Options
+    # Audio Output options
     long_option :flag => '-format', :name => :audio_format
     long_option :flag => '-mixer', :name => :audio_mixer
     long_option :flag => '-mixer-channel', :name => :audio_mixer_channel
     long_option :flag => '-softvol', :name => :audio_software_mixer
     long_option :flag => '-volstep', :name => :audio_volume_step
 
-    # Audio Output Options
-    long_option :flag => '-ao', :name => :audio_options
+    # Audio Output Drivers
+    priority_list :flag => '-ao', :name => :audio_options
 
-    # Video Output Options
+    # Video Output options
     long_option :flag => '-adapter', :name => :video_adapter
     long_option :flag => '-bpp', :name => :video_bpp
     long_option :flag => '-border', :name => :video_border
@@ -66,7 +66,7 @@ module RTranscoder
     long_option :flag => '-contrast', :name => :video_contrast
     long_option :flag => '-display', :name => :x11_display
     long_option :flag => '-dr', :name => :enable_direct_rendering
-    long_option :flag => '-dxr2', :name => :dxr2_options
+    sub_options :flag => '-dxr2', :name => :dxr2_options
     long_option :flag => '-fbmode', :name => :frame_buffer
     long_option :flag => '-fbmodeconfig', :name => :override_frame_buffer
     long_option :flag => '-fs', :name => :fullscreen
@@ -106,8 +106,8 @@ module RTranscoder
     long_option :flag => '-zrxdoff', :name => :zr_x_offset
     long_option :flag => '-zrydoff', :name => :zr_y_offset
 
-    # Video Output Drivers
-    long_option :flag => '-vo', :name => :video_output
+    # Video Output Driver options
+    priority_list :flag => '-vo', :name => :video_output
 
     non_option :tailing => true, :name => :media
 
