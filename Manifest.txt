@@ -15,6 +15,7 @@ lib/rtranscoder/ffmpeg/extensions.rb
 lib/rtranscoder/ffmpeg/extensions/integer.rb
 lib/rtranscoder/ffmpeg/rtranscoder.rb
 lib/rtranscoder/mplayer.rb
+lib/rtranscoder/mencoder.rb
 lib/rtranscoder/mplayer/mplayer_common_task.rb
 lib/rtranscoder/mplayer/mplayer.rb
 lib/rtranscoder/mplayer/mplayer_task.rb
