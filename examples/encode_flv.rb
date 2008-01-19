@@ -9,9 +9,9 @@ include RTranscoder
 #
 FFmpeg.encode do |ffmpeg|
   ffmpeg.input = 'video.avi'
-  ffmpeg.audio_sampling_rate = 22050 # Hz
+  ffmpeg.audio_sampling_rate = 22.050.kHz
   ffmpeg.audio_bitrate = 32 # kbit/s
-  ffmpeg.video_frame_dimension = '320x240'
+  ffmpeg.video_frame_dimension = 320.by(240)
   ffmpeg.output_format = :flv
   ffmpeg.output = 'video.flv'
 end

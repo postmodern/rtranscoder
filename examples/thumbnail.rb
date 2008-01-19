@@ -15,7 +15,7 @@ FFmpeg.encode do |ffmpeg|
   ffmpeg.record_for = '00:00:01'
   ffmpeg.record_fps = 1
   ffmpeg.overwrite_file = true
-  ffmpeg.output_dimension = '320x240'
+  ffmpeg.output_dimension = 320.by(240)
   ffmpeg.output = 'video_thumbnail%d.jpg'
 end
 
@@ -25,5 +25,5 @@ end
 RTranscoder.thumbnail(:video => 'video.flv',
                       :start => '00:00:03',
                       :length => '00:00:01',
-                      :dimension => '320x240',
+                      :dimension => 320.by(240),
                       :image => 'thumb%d.jpg')
