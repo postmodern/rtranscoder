@@ -1,0 +1,1 @@
+require 'rtranscoder/mplayer/mencoder'
