@@ -1,4 +1,4 @@
-require 'rtranscoder/mencoder/mencoder_task'
+require 'rtranscoder/mplayer/mencoder_task'
 require 'rtranscoder/extensions'
 
 require 'rprogram/program'
