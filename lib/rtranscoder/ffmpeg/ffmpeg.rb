@@ -46,22 +46,32 @@ module RTranscoder
     # <tt>:video</tt>:: The input video file.
     # <tt>:start</tt>:: The start timestamp of the thumbnail.
     # <tt>:length</tt>:: The duration time of the thumbnail.
+    # <tt>:frames</tt>:: Number of video frames to record.
     # <tt>:fps</tt>:: The FPS to use, defaults to 1.
     # <tt>:width</tt>:: The width of the thumbnail.
     # <tt>:height</tt>:: The height of the thumbnail.
     # <tt>:image</tt>:: The output thumbnail image.
     #
     def thumbnail(options={})
+      image = File.expand_path(options[:image])
+
       encode do |ffmpeg|
         ffmpeg.input = options[:video]
-        ffmpeg.disable_audio = true
         ffmpeg.record_start_time = options[:start]
         ffmpeg.record_for = options[:length]
+        ffmpeg.video_frames = options[:frames]
         ffmpeg.fps = (options[:fps] || 1)
-        ffmpeg.overwrite_output_files = true
         ffmpeg.video_frame_size = "#{options[:width]}x#{options[:height]}"
-        ffmpeg.output = options[:image]
+        ffmpeg.disable_audio = true
+        ffmpeg.overwrite_output_files = true
+        ffmpeg.output = image
       end
+
+      image_search = image.split('%d').map { |part|
+        Regexp.escape(part)
+      }.join('*')
+
+      return Dir[image_search]
     end
 
   end
