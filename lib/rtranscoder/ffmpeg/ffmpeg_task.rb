@@ -27,7 +27,7 @@ module RTranscoder
     # Video options
     long_option :flag => '-vframes', :name => :video_frames
     short_option :flag => '-r', :name => :fps
-    short_option :flag => '-s', :name => :video_frame_dimension
+    short_option :flag => '-s', :name => :video_frame_size
     long_option :flag => '-aspect', :name => :aspect_ratio
     long_option :flag => '-croptop', :name => :crop_top
     long_option :flag => '-cropbottom', :name => :crop_bottom

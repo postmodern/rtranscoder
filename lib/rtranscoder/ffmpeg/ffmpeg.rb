@@ -58,8 +58,8 @@ module RTranscoder
         ffmpeg.record_start_time = options[:start]
         ffmpeg.record_for = options[:length]
         ffmpeg.fps = (options[:fps] || 1)
-        ffmpeg.overwrite_file = true
-        ffmpeg.output_dimension = "#{options[:width]}x#{options[:height]}"
+        ffmpeg.overwrite_output_file = true
+        ffmpeg.video_frame_size = "#{options[:width]}x#{options[:height]}"
         ffmpeg.output = options[:image]
       end
     end
