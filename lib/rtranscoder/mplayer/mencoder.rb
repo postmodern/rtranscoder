@@ -20,7 +20,7 @@ module RTranscoder
     # See MEncoder#encode.
     #
     def self.encode(options={},&block)
-      self.create.encode(options,&block)
+      self.find.encode(options,&block)
     end
 
     #

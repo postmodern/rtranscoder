@@ -20,7 +20,7 @@ module RTranscoder
     # See MPlayer#play.
     #
     def self.play(options={},&block)
-      self.create.play(options,&block)
+      self.find.play(options,&block)
     end
 
     #
