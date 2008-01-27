@@ -21,14 +21,14 @@ module RTranscoder
     # See FFmpeg#encode.
     #
     def self.encode(options={},&block)
-      self.create.encode(options,&block)
+      self.find.encode(options,&block)
     end
 
     #
     # See FFmpeg#thumbnail.
     #
     def self.thumbnail(options={})
-      self.create.thumbnail(options)
+      self.find.thumbnail(options)
     end
 
     #
@@ -57,7 +57,7 @@ module RTranscoder
         ffmpeg.disable_audio = true
         ffmpeg.record_start_time = options[:start]
         ffmpeg.record_for = options[:length]
-        ffmpeg.record_fps = (options[:fps] || 1)
+        ffmpeg.fps = (options[:fps] || 1)
         ffmpeg.overwrite_file = true
         ffmpeg.output_dimension = "#{options[:width]}x#{options[:height]}"
         ffmpeg.output = options[:image]
