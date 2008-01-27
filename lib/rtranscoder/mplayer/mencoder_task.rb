@@ -30,7 +30,7 @@ module RTranscoder
     protected
 
     def self.codec_options(name)
-      long_option :flag => "-#{name}opts", :name => name, :separator => ',', :sub_options => true
+      long_option :flag => "-#{name}opts", :name => name, :separator => ':', :sub_options => true
     end
 
     # Codec Specific Encoding options
