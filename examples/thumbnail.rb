@@ -14,7 +14,7 @@ FFmpeg.encode do |ffmpeg|
   ffmpeg.record_start_time = '00:00:03'
   ffmpeg.record_for = '00:00:01'
   ffmpeg.fps = 1
-  ffmpeg.overwrite_output_file = true
+  ffmpeg.overwrite_output_files = true
   ffmpeg.video_frame_size = '320x240'
   ffmpeg.output = 'video_thumbnail%d.jpg'
 end
