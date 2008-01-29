@@ -25,5 +25,5 @@ end
 #
 # Equivalent to:
 #   $ mencoder input.avi -o output.mp4 -queit -ovc x264 -x264encopts \
-#     bitrate=3000 nr=2000 -oac faac -faacopts br=32:tns
+#     bitrate=3000:nr=2000 -oac faac -faacopts br=32:tns
 #
