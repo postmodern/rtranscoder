@@ -1,3 +1,11 @@
+== 0.1.1 / 2008-01-28
+
+* Fixed show-stopping bug:
+  * <tt>lib/rtranscoder/ffmpeg/ffmpeg.rb</tt> was requiring:
+    <tt>lib/rtransocder/ffmpeg/extensions.rb</tt> which no longer exists.
+* Fixed typos in <tt>exmaples/</tt>.
+* Added examples to <tt>README.txt</tt>.
+
 == 0.1.0 / 2008-01-27
 
 * Many bug fixes.
