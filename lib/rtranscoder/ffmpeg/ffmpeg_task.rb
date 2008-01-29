@@ -2,7 +2,7 @@ require 'rprogram/task'
 
 module RTranscoder
   #
-  # ==FFmpegTask options:
+  # ==FFmpeg options:
   #
   # <tt>-refs</tt>:: <tt>ffmpeg.ref_frames_for_motion_compensation</tt>
   # <tt>-subcmp</tt>:: <tt>ffmpeg.sub_full_pel_motion_estimation_compare</tt>

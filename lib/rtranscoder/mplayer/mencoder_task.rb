@@ -1,6 +1,43 @@
 require 'rtranscoder/mplayer/mplayer_common_task'
 
 module RTranscoder
+  #
+  # ==MEncoder options:
+  #
+  # <tt>-toolameopts</tt>:: <tt>mplayer.toolame</tt>
+  # <tt>-ofps</tt>:: <tt>mplayer.output_fps</tt>
+  # <tt>-audio-density</tt>:: <tt>mplayer.audio_density</tt>
+  # <tt>-mpegopts</tt>:: <tt>mplayer.mpeg</tt>
+  # <tt>-vobsuboutindex</tt>:: <tt>mplayer.vob_output_subtitle_index</tt>
+  # <tt>-noencodedups</tt>:: <tt>mplayer.ignore_duplicate_frames</tt>
+  # <tt>-twolameopts</tt>:: <tt>mplayer.twolame</tt>
+  # <tt>-ovc</tt>:: <tt>mplayer.output_video_codec</tt>
+  # <tt>-audio-preload</tt>:: <tt>mplayer.audio_preload</tt>
+  # <tt>-lavfopts</tt>:: <tt>mplayer.lavf</tt>
+  # <tt>-noodml</tt>:: <tt>mplayer.disable_open_dml_index</tt>
+  # <tt>-nuvopts</tt>:: <tt>mplayer.nuv</tt>
+  # <tt>-passlogfile</tt>:: <tt>mplayer.pass_log_file</tt>
+  # <tt>-o</tt>:: <tt>mplayer.output</tt>
+  # <tt>-force-avi-aspect</tt>:: <tt>mplayer.force_avi_aspect</tt>
+  # <tt>-fafmttag</tt>:: <tt>mplayer.audio_tag_format</tt>
+  # <tt>-lavcopts</tt>:: <tt>mplayer.lavc</tt>
+  # <tt>-noskip</tt>:: <tt>mplayer.disable_frame_skipping</tt>
+  # <tt>-xvfwopts</tt>:: <tt>mplayer.xvfw</tt>
+  # <tt>-skiplimit</tt>:: <tt>mplayer.skip_limit</tt>
+  # <tt>-info</tt>:: <tt>mplayer.info</tt>
+  # <tt>-ffourcc</tt>:: <tt>mplayer.video_fourcc</tt>
+  # <tt>-xvidencopts</tt>:: <tt>mplayer.xvidenc</tt>
+  # <tt>-oac</tt>:: <tt>mplayer.output_audio_codec</tt>
+  # <tt>-faacopts</tt>:: <tt>mplayer.faac</tt>
+  # <tt>-vobsubout</tt>:: <tt>mplayer.vob_output_basename</tt>
+  # <tt>-hr-edl-seek</tt>:: <tt>mplayer.hires_edl_seek</tt>
+  # <tt>-lameopts</tt>:: <tt>mplayer.lame</tt>
+  # <tt>-of</tt>:: <tt>mplayer.output_container</tt>
+  # <tt>-audio-delay</tt>:: <tt>mplayer.audio_delay</tt>
+  # <tt>-x264encopts</tt>:: <tt>mplayer.x264enc</tt>
+  # <tt>-vobsuboutid</tt>:: <tt>mplayer.vob_output_subtitle_language</tt>
+  # <tt>-noautoexpand</tt>:: <tt>mplayer.disable_auto_expand</tt>
+  #
   class MEncoderTask < MPlayerCommonTask
 
     # General Encoding options
