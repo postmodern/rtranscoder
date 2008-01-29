@@ -2,60 +2,198 @@ require 'rprogram/task'
 
 module RTranscoder
   #
-  # ==Synopsis:
+  # ==FFmpegTask options:
   #
-  # FFmpegTask represents a configuration to run +ffmpeg+ with.
+  # <tt>-refs</tt>:: <tt>ffmpeg.ref_frames_for_motion_compensation</tt>
+  # <tt>-subcmp</tt>:: <tt>ffmpeg.sub_full_pel_motion_estimation_compare</tt>
+  # <tt>-slang</tt>:: <tt>ffmpeg.subtitle_language_code</tt>
+  # <tt>-shortest</tt>:: <tt>ffmpeg.shortest</tt>
+  # <tt>-padright</tt>:: <tt>ffmpeg.pad_right</tt>
+  # <tt>-mb_threshold</tt>:: <tt>ffmpeg.macroblock_threshold</tt>
+  # <tt>-mpeg_quant</tt>:: <tt>ffmpeg.mpeg_quantizers</tt>
+  # <tt>-dc</tt>:: <tt>ffmpeg.intra_dc_precision</tt>
+  # <tt>-y</tt>:: <tt>ffmpeg.overwrite_output_files</tt>
+  # <tt>-trellis</tt>:: <tt>ffmpeg.rate_distortion_optimal_quantization</tt>
+  # <tt>-last_pred</tt>:: <tt>ffmpeg.motion_preditors_from_previous</tt>
+  # <tt>-target</tt>:: <tt>ffmpeg.target</tt>
+  # <tt>-isync</tt>:: <tt>ffmpeg.sync_read_on_input</tt>
+  # <tt>-bug</tt>:: <tt>ffmpeg.bug</tt>
+  # <tt>-vcodec</tt>:: <tt>ffmpeg.video_codec</tt>
+  # <tt>-skip_bottom</tt>:: <tt>ffmpeg.skip_bottom_macroblock_rows</tt>
+  # <tt>-vbsf</tt>:: <tt>ffmpeg.bitstream_filter</tt>
+  # <tt>-ss</tt>:: <tt>ffmpeg.record_start_time</tt>
+  # <tt>-bufsize</tt>:: <tt>ffmpeg.video_ratecontrol_buffer_size</tt>
+  # <tt>--mv0_threshold</tt>:: <tt>ffmpeg.mv0_threshold</tt>
+  # <tt>-deblockalpha</tt>:: <tt>ffmpeg.alphac0_deblocking</tt>
+  # <tt>-pre_dia_size</tt>:: <tt>ffmpeg.pre_pass_diamond_type_and_size</tt>
+  # <tt>-re</tt>:: <tt>ffmpeg.read_at_native_fps</tt>
+  # <tt>-author</tt>:: <tt>ffmpeg.author</tt>
+  # <tt>-newvideo</tt>:: <tt>ffmpeg.new_video_stream</tt>
+  # <tt>-lowres</tt>:: <tt>ffmpeg.lowres_decode</tt>
+  # <tt>-vframes</tt>:: <tt>ffmpeg.video_frames</tt>
+  # <tt>-dct</tt>:: <tt>ffmpeg.dct_algorithm</tt>
+  # <tt>-ar</tt>:: <tt>ffmpeg.audio_sampling_rate</tt>
+  # <tt>-copyright</tt>:: <tt>ffmpeg.copyright</tt>
+  # <tt>-max_prediction_order</tt>:: <tt>ffmpeg.max_prediction_order</tt>
+  # <tt>-sc_factor</tt>:: <tt>ffmpeg.scene_change_modifier</tt>
+  # <tt>-ibias</tt>:: <tt>ffmpeg.intra_quant_bias</tt>
+  # <tt>-vglobal</tt>:: <tt>ffmpeg.video_global_header</tt>
+  # <tt>-vdt</tt>:: <tt>ffmpeg.discard_threshold</tt>
+  # <tt>-skip_ext</tt>:: <tt>ffmpeg.frame_skip_exponent</tt>
+  # <tt>-scplx_mask</tt>:: <tt>ffmpeg.spatial_complexity_masking</tt>
+  # <tt>-flags</tt>:: <tt>ffmpeg.flags</tt>
+  # <tt>-acodec</tt>:: <tt>ffmpeg.audio_codec</tt>
+  # <tt>-qdiff</tt>:: <tt>ffmpeg.qdiff</tt>
+  # <tt>-aspect</tt>:: <tt>ffmpeg.aspect_ratio</tt>
+  # <tt>-encoding_track</tt>:: <tt>ffmpeg.encoding_track</tt>
+  # <tt>-lpc_coeff_precision</tt>:: <tt>ffmpeg.lpc_coefficient_precision</tt>
+  # <tt>-context</tt>:: <tt>ffmpeg.video_encoding_context_model</tt>
+  # <tt>-debug</tt>:: <tt>ffmpeg.debug</tt>
+  # <tt>-muxpreload</tt>:: <tt>ffmpeg.initial_demux_delay</tt>
+  # <tt>-comment</tt>:: <tt>ffmpeg.comment</tt>
+  # <tt>-me</tt>:: <tt>ffmpeg.motion_estimation_method</tt>
+  # <tt>-mblmax</tt>:: <tt>ffmpeg.max_macroblock_lag_range_factor</tt>
+  # <tt>-ec</tt>:: <tt>ffmpeg.error_concealment</tt>
+  # <tt>-alang</tt>:: <tt>ffmpeg.audio_language_code</tt>
+  # <tt>-top</tt>:: <tt>ffmpeg.top</tt>
+  # <tt>-cropleft</tt>:: <tt>ffmpeg.crop_left</tt>
+  # <tt>-timecode_frame_start</tt>:: <tt>ffmpeg.gop_timecode_frame_start</tt>
+  # <tt>-lmin</tt>:: <tt>ffmpeg.min_lag_range_factor</tt>
+  # <tt>-g</tt>:: <tt>ffmpeg.group_picture_size</tt>
+  # <tt>-deinterlace</tt>:: <tt>ffmpeg.deinterlace</tt>
+  # <tt>-cpp</tt>:: <tt>ffmpeg.constant_quantization_parameter_rate_control</tt>
+  # <tt>-vismv</tt>:: <tt>ffmpeg.visualize_motion_vectors</tt>
+  # <tt>-scodec</tt>:: <tt>ffmpeg.subtitle_codec</tt>
+  # <tt>-loop_output</tt>:: <tt>ffmpeg.loop_output</tt>
+  # <tt>-padbottom</tt>:: <tt>ffmpeg.pad_bottom</tt>
+  # <tt>-version</tt>:: <tt>ffmpeg.version</tt>
+  # <tt>-packetsize</tt>:: <tt>ffmpeg.encoding_packet_size</tt>
+  # <tt>-flags2</tt>:: <tt>ffmpeg.extra_flags</tt>
+  # <tt>-vstats_file</tt>:: <tt>ffmpeg.log_video_coding_statistics</tt>
+  # <tt>-rc_strategy</tt>:: <tt>ffmpeg.video_ratecontrol_method</tt>
+  # <tt>-chromaoffset</tt>:: <tt>ffmpeg.chroma_gp_offset_from_luma</tt>
+  # <tt>-mbcomp</tt>:: <tt>ffmpeg.marcoblock_compare_function</tt>
+  # <tt>-vc</tt>:: <tt>ffmpeg.video_graph_channel</tt>
+  # <tt>-dts_delta_threshold</tt>:: <tt>ffmpeg.dts_delta_threshold</tt>
+  # <tt>-padcolor</tt>:: <tt>ffmpeg.pad_color</tt>
+  # <tt>-nssew</tt>:: <tt>ffmpeg.nsse_weight</tt>
+  # <tt>-rc_eq</tt>:: <tt>ffmpeg.video_rate_control</tt>
+  # <tt>-vtag</tt>:: <tt>ffmpeg.force_video_tag</tt>
+  # <tt>-t</tt>:: <tt>ffmpeg.record_for</tt>
+  # <tt>-directpred 1</tt>:: <tt>ffmpeg.direct_mv_prediction</tt>
+  # <tt>-inter_threshold</tt>:: <tt>ffmpeg.inter_threshold</tt>
+  # <tt>-preme</tt>:: <tt>ffmpeg.pre_motion_estimation</tt>
+  # <tt>-sameq</tt>:: <tt>ffmpeg.preserve_video_quality</tt>
+  # <tt>-map</tt>:: <tt>ffmpeg.input_stream_mapping</tt>
+  # <tt>-profile</tt>:: <tt>ffmpeg.encoding_profile</tt>
+  # <tt>-rc_buf_aggressivity</tt>:: <tt>ffmpeg.currently_useless</tt>
+  # <tt>-aframes</tt>:: <tt>ffmpeg.audio_frames</tt>
+  # <tt>-title</tt>:: <tt>ffmpeg.title</tt>
+  # <tt>-itsoffset</tt>:: <tt>ffmpeg.input_ts_offset</tt>
+  # <tt>-compression_level</tt>:: <tt>ffmpeg.compression_level</tt>
+  # <tt>-deblockbeta</tt>:: <tt>ffmpeg.beta_deblocking</tt>
+  # <tt>-subq</tt>:: <tt>ffmpeg.sub_pel_motion_estimation_quality</tt>
+  # <tt>-vsync</tt>:: <tt>ffmpeg.video_sync</tt>
+  # <tt>-pix_fmt</tt>:: <tt>ffmpeg.pixel_format</tt>
+  # <tt>-skip_threshold</tt>:: <tt>ffmpeg.frame_skip_threshold</tt>
+  # <tt>-ac</tt>:: <tt>ffmpeg.audio_channels</tt>
+  # <tt>-album</tt>:: <tt>ffmpeg.album</tt>
+  # <tt>-r</tt>:: <tt>ffmpeg.fps</tt>
+  # <tt>-lumi_mask</tt>:: <tt>ffmpeg.luminescence_mask</tt>
+  # <tt>-dump</tt>:: <tt>ffmpeg.dump</tt>
+  # <tt>-prediction_order_method</tt>:: <tt>ffmpeg.prediction_order_method</tt>
+  # <tt>-b_sensitivity</tt>:: <tt>ffmpeg.b_frame_sensitivity</tt>
+  # <tt>-pbias</tt>:: <tt>ffmpeg.inter_quant_bias</tt>
+  # <tt>-copyts</tt>:: <tt>ffmpeg.copy_timestams</tt>
+  # <tt>-rc_eq</tt>:: <tt>ffmpeg.rate_control_equation</tt>
+  # <tt>-skipcmp</tt>:: <tt>ffmpeg.frame_skip_compare</tt>
+  # <tt>-dark_mask</tt>:: <tt>ffmpeg.darkness_mask</tt>
+  # <tt>-vol</tt>:: <tt>ffmpeg.audio_volume</tt>
+  # <tt>-intra_matrix</tt>:: <tt>ffmpeg.intra_matrix</tt>
+  # <tt>-croptop</tt>:: <tt>ffmpeg.crop_top</tt>
+  # <tt>-encoding_year</tt>:: <tt>ffmpeg.encoding_year</tt>
+  # <tt>-min_partition_order</tt>:: <tt>ffmpeg.min_audio_partition_order</tt>
+  # <tt>-mbd</tt>:: <tt>ffmpeg.macroblock_decision_algorithm</tt>
+  # <tt>-me_threshold</tt>:: <tt>ffmpeg.motion_estimation_threshold</tt>
+  # <tt>-b</tt>:: <tt>ffmpeg.video_bitrate</tt>
+  # <tt>-mepc</tt>:: <tt>ffmpeg.motion_estimation_bitrate_penalty</tt>
+  # <tt>-pred</tt>:: <tt>ffmpeg.encoding_prediction_method</tt>
+  # <tt>-atag</tt>:: <tt>ffmpeg.force_audio_tag</tt>
+  # <tt>-benchmark</tt>:: <tt>ffmpeg.benchmark</tt>
+  # <tt>-cropright</tt>:: <tt>ffmpeg.crop_right</tt>
+  # <tt>-probesize</tt>:: <tt>ffmpeg.decoding_probe_size</tt>
+  # <tt>-lmax</tt>:: <tt>ffmpeg.max_lag_range_factor</tt>
+  # <tt>-cutoff</tt>:: <tt>ffmpeg.audio_bandwidth_cutoff</tt>
+  # <tt>-psnr</tt>:: <tt>ffmpeg.calculate_psnr</tt>
+  # <tt>-keyint_min</tt>:: <tt>ffmpeg.min_interval_between_idr_frames</tt>
+  # <tt>-cmp</tt>:: <tt>ffmpeg.full_pel_motion_estimation_compare</tt>
+  # <tt>-threads</tt>:: <tt>ffmpeg.threads</tt>
+  # <tt>-padleft</tt>:: <tt>ffmpeg.pad_left</tt>
+  # <tt>-hex</tt>:: <tt>ffmpeg.hex</tt>
+  # <tt>-newsubtitle</tt>:: <tt>ffmpeg.new_subtitles_stream</tt>
+  # <tt>-analyzeduration</tt>:: <tt>ffmpeg.decoding_analyze_duration</tt>
+  # <tt>-qns</tt>:: <tt>ffmpeg.quantizer_noise_shaping</tt>
+  # <tt>-ps</tt>:: <tt>ffmpeg.video_rtp_payload_size</tt>
+  # <tt>-vhook</tt>:: <tt>ffmpeg.video_processing_module</tt>
+  # <tt>-i</tt>:: <tt>ffmpeg.input</tt>
+  # <tt>-f</tt>:: <tt>ffmpeg.output_format</tt>
+  # <tt>-bframebias</tt>:: <tt>ffmpeg.influences_b_frame_usage</tt>
+  # <tt>-dia_size</tt>:: <tt>ffmpeg.diamond_type_and_size</tt>
+  # <tt>-tvstd</tt>:: <tt>ffmpeg.television_standard</tt>
+  # <tt>-hurry_up</tt>:: <tt>ffmpeg.hurry_up</tt>
+  # <tt>-vn</tt>:: <tt>ffmpeg.disable_video</tt>
+  # <tt>-skip_top</tt>:: <tt>ffmpeg.skip_top_macroblock_rows</tt>
+  # <tt>-fs</tt>:: <tt>ffmpeg.limit_file_size</tt>
+  # <tt>-minrate</tt>:: <tt>ffmpeg.max_video_bitrate</tt>
+  # <tt>-qphist</tt>:: <tt>ffmpeg.qp_histogram</tt>
+  # <tt>-complexityblur</tt>:: <tt>ffmpeg.reduce_gp_fluctuations</tt>
+  # <tt>-border_mask</tt>:: <tt>ffmpeg.border_mask</tt>
+  # <tt>-precmp</tt>:: <tt>ffmpeg.pre_motion_estimation_compare</tt>
+  # <tt>-map_meta_data</tt>:: <tt>ffmpeg.metadata_mapping</tt>
+  # <tt>-passlogfile</tt>:: <tt>ffmpeg.pass_log_file</tt>
+  # <tt>-pass</tt>:: <tt>ffmpeg.pass</tt>
+  # <tt>-level</tt>:: <tt>ffmpeg.encoding_level</tt>
+  # <tt>-rc_init_cplx</tt>:: <tt>ffmpeg.initial_pass_complexity</tt>
+  # <tt>-aq</tt>:: <tt>ffmpeg.audio_quality</tt>
+  # <tt>-timestamp</tt>:: <tt>ffmpeg.timestamp</tt>
+  # <tt>-dframes</tt>:: <tt>ffmpeg.data_frames</tt>
+  # <tt>-min_prediction_order</tt>:: <tt>ffmpeg.min_prediction_order</tt>
+  # <tt>-partitions</tt>:: <tt>ffmpeg.macroblock_subpartition_size</tt>
+  # <tt>-me_range</tt>:: <tt>ffmpeg.limit_motion_vectors_range</tt>
+  # <tt>-intra</tt>:: <tt>ffmpeg.only_intra_frames</tt>
+  # <tt>-async</tt>:: <tt>ffmpeg.audio_sync</tt>
+  # <tt>-skip_factor</tt>:: <tt>ffmpeg.frame_skip_factor</tt>
+  # <tt>-tcplx_mask</tt>:: <tt>ffmpeg.temporal_complexity_masking</tt>
+  # <tt>-an</tt>:: <tt>ffmpeg.disable_audio</tt>
+  # <tt>-qscale</tt>:: <tt>ffmpeg.qscale</tt>
+  # <tt>-s</tt>:: <tt>ffmpeg.video_frame_size</tt>
+  # <tt>-fflags</tt>:: <tt>ffmpeg.fflags</tt>
+  # <tt>-use_lpc</tt>:: <tt>ffmpeg.lpc_mode</tt>
+  # <tt>-coder</tt>:: <tt>ffmpeg.video_coder</tt>
+  # <tt>-muxdelay</tt>:: <tt>ffmpeg.maximum_demux_delay</tt>
+  # <tt>-rc_override</tt>:: <tt>ffmpeg.rate_control_override</tt>
+  # <tt>-mblmin</tt>:: <tt>ffmpeg.min_macroblock_lag_range_factor</tt>
+  # <tt>-idct</tt>:: <tt>ffmpeg.idct_implementation</tt>
+  # <tt>-inter_matrix</tt>:: <tt>ffmpeg.inter_matrix</tt>
+  # <tt>-cropbottom</tt>:: <tt>ffmpeg.crop_bottom</tt>
+  # <tt>-h</tt>:: <tt>ffmpeg.help</tt>
+  # <tt>-newaudio</tt>:: <tt>ffmpeg.new_audio_stream</tt>
+  # <tt>-max_partition_order</tt>:: <tt>ffmpeg.max_audio_partition_order</tt>
+  # <tt>-sc_threshold</tt>:: <tt>ffmpeg.encoding_scene_change_threshold</tt>
+  # <tt>-ab</tt>:: <tt>ffmpeg.audio_bitrate</tt>
+  # <tt>-strict</tt>:: <tt>ffmpeg.strictness</tt>
+  # <tt>-crf</tt>:: <tt>ffmpeg.constant_quality_mode</tt>
+  # <tt>-aspect</tt>:: <tt>ffmpeg.encoding_sample_aspect_ratio</tt>
+  # <tt>-absf</tt>:: <tt>ffmpeg.audio_bitstream_filter</tt>
+  # <tt>-loop_input</tt>:: <tt>ffmpeg.loop_input</tt>
+  # <tt>-padtop</tt>:: <tt>ffmpeg.pad_top</tt>
+  # <tt>-muxrate</tt>:: <tt>ffmpeg.encoding_mux_rate</tt>
+  # <tt>-nr</tt>:: <tt>ffmpeg.noise_reduction</tt>
+  # <tt>-L</tt>:: <tt>ffmpeg.license</tt>
+  # <tt>-v</tt>:: <tt>ffmpeg.verbose</tt>
+  # <tt>-frame_size</tt>:: <tt>ffmpeg.audio_frame_size</tt>
+  # <tt>-vstats</tt>:: <tt>ffmpeg.dump_video_coding_statistics</tt>
   #
-  #   ffmpeg = FFmpegTask.new
-  #
-  #   FFmpeg.encode do |ffmpeg|
-  #     ...
-  #   end
-  #
-  # ==Main options:
-  #
-  # <tt>-L</tt>:: <tt>ffmpeg.license = true</tt>
-  # <tt>-h</tt>:: <tt>ffmpeg.help = true</tt>
-  # <tt>-version</tt>:: <tt>ffmpeg.version = true</tt>
-  # <tt>-f fmt</tt>:: <tt>ffmpeg.output_format = 'fmt'</tt>
-  # <tt>-i filename</tt>:: <tt>ffmpeg.input = 'filename'</tt>
-  # <tt>-y</tt>:: <tt>ffmpeg.overwrite_output_files = true</tt>
-  # <tt>-t duration</tt>:: <tt>ffmpeg.record_for = duration</tt>
-  # <tt>-fs limit_size</tt>:: <tt>ffmpeg.limit_file_size = size</tt>
-  # <tt>-ss time_off</tt>:: <tt>ffmpeg.record_start_time = '00:00:03'</tt>
-  # <tt>-itsoffset time_off</tt>:: <tt>ffmpeg.input_ts_offset = '00:00:01'</tt>
-  # <tt>-title string</tt>:: <tt>ffmpeg.title = 'title'</tt>
-  # <tt>-timestamp time</tt>:: <tt>ffmpeg.timestamp = ts</tt>
-  # <tt>-autor string</tt>:: <tt>ffmpeg.author = 'author'</tt>
-  # <tt>-copyright string</tt>:: <tt>ffmpeg.copyright = 'copyfight'</tt>
-  # <tt>-comment string</tt>:: <tt>ffmpeg.comment = 'comments'</tt>
-  # <tt>-album string</tt>:: <tt>ffmpeg.album = 'album'</tt>
-  # <tt>-v verbose</tt>:: <tt>ffmpeg.verbose = verbosity</tt>
-  # <tt>-target type</tt>:: <tt>ffmpeg.target = type</tt>
-  # <tt>-dframes number</tt>:: <tt>ffmpeg.data_frames = n</tt>
-  #
-  # ==Video options:
-  #
-  # <tt>-vframes number</tt>:: <tt>ffmpeg.video_frames = n</tt>
-  # <tt>-r rate</tt>:: <tt>ffmpeg.fps = 11.kHz</tt>
-  # <tt>-s size</tt>:: <tt>ffmpeg.video_frame_size = size</tt>
-  # <tt>-aspect aspect</tt>:: <tt>ffmpeg.aspect_ratio = '4:3'</tt>
-  # <tt>-croptop size</tt>:: <tt>ffmpeg.crop_top = size</tt>
-  # <tt>-cropbottom size</tt>:: <tt>ffmpeg.crop_bottom = size</tt>
-  # <tt>-cropleft size</tt>:: <tt>ffmpeg.crop_left = size</tt>
-  # <tt>-cropright size</tt>:: <tt>ffmpeg.crop_right = size</tt>
-  # <tt>-padtop size</tt>:: <tt>ffmpeg.pad_top = size</tt>
-  # <tt>-padbottom size</tt>:: <tt>ffmpeg.pad_bottom = size</tt>
-  # <tt>-padleft size</tt>:: <tt>ffmpeg.pad_left = size</tt>
-  # <tt>-padright size</tt>:: <tt>ffmpeg.pad_right = size</tt>
-  # <tt>-padcolor color</tt>:: <tt>ffmpeg.pad_color = '000000'</tt>
-  # <tt>-vn</tt>:: <tt>ffmpeg.disable_video = true</tt>
-  # <tt>-vcodec codec</tt>:: <tt>ffmpeg.video_codec = codec</tt>
-  # <tt>-sameq</tt>:: <tt>ffmpeg.preserve_video_quality = true</tt>
-  # <tt>-pass n</tt>:: <tt>ffmpeg.pass = n</tt>
-  # <tt>-passlogfile file</tt>:: <tt>ffmpeg.pass_log_file = 'file'</tt>
-  # <tt>-newvideo</tt>:: <tt>ffmpeg.new_video_stream = true</tt>
-  # 
   class FFmpegTask < RProgram::Task
 
     # Main options
