@@ -1,6 +1,61 @@
 require 'rprogram/task'
 
 module RTranscoder
+  #
+  # ==Synopsis:
+  #
+  # FFmpegTask represents a configuration to run +ffmpeg+ with.
+  #
+  #   ffmpeg = FFmpegTask.new
+  #
+  #   FFmpeg.encode do |ffmpeg|
+  #     ...
+  #   end
+  #
+  # ==Main options:
+  #
+  # <tt>-L</tt>:: <tt>ffmpeg.license = true</tt>
+  # <tt>-h</tt>:: <tt>ffmpeg.help = true</tt>
+  # <tt>-version</tt>:: <tt>ffmpeg.version = true</tt>
+  # <tt>-f fmt</tt>:: <tt>ffmpeg.output_format = 'fmt'</tt>
+  # <tt>-i filename</tt>:: <tt>ffmpeg.input = 'filename'</tt>
+  # <tt>-y</tt>:: <tt>ffmpeg.overwrite_output_files = true</tt>
+  # <tt>-t duration</tt>:: <tt>ffmpeg.record_for = duration</tt>
+  # <tt>-fs limit_size</tt>:: <tt>ffmpeg.limit_file_size = size</tt>
+  # <tt>-ss time_off</tt>:: <tt>ffmpeg.record_start_time = '00:00:03'</tt>
+  # <tt>-itsoffset time_off</tt>:: <tt>ffmpeg.input_ts_offset = '00:00:01'</tt>
+  # <tt>-title string</tt>:: <tt>ffmpeg.title = 'title'</tt>
+  # <tt>-timestamp time</tt>:: <tt>ffmpeg.timestamp = ts</tt>
+  # <tt>-autor string</tt>:: <tt>ffmpeg.author = 'author'</tt>
+  # <tt>-copyright string</tt>:: <tt>ffmpeg.copyright = 'copyfight'</tt>
+  # <tt>-comment string</tt>:: <tt>ffmpeg.comment = 'comments'</tt>
+  # <tt>-album string</tt>:: <tt>ffmpeg.album = 'album'</tt>
+  # <tt>-v verbose</tt>:: <tt>ffmpeg.verbose = verbosity</tt>
+  # <tt>-target type</tt>:: <tt>ffmpeg.target = type</tt>
+  # <tt>-dframes number</tt>:: <tt>ffmpeg.data_frames = n</tt>
+  #
+  # ==Video options:
+  #
+  # <tt>-vframes number</tt>:: <tt>ffmpeg.video_frames = n</tt>
+  # <tt>-r rate</tt>:: <tt>ffmpeg.fps = 11.kHz</tt>
+  # <tt>-s size</tt>:: <tt>ffmpeg.video_frame_size = size</tt>
+  # <tt>-aspect aspect</tt>:: <tt>ffmpeg.aspect_ratio = '4:3'</tt>
+  # <tt>-croptop size</tt>:: <tt>ffmpeg.crop_top = size</tt>
+  # <tt>-cropbottom size</tt>:: <tt>ffmpeg.crop_bottom = size</tt>
+  # <tt>-cropleft size</tt>:: <tt>ffmpeg.crop_left = size</tt>
+  # <tt>-cropright size</tt>:: <tt>ffmpeg.crop_right = size</tt>
+  # <tt>-padtop size</tt>:: <tt>ffmpeg.pad_top = size</tt>
+  # <tt>-padbottom size</tt>:: <tt>ffmpeg.pad_bottom = size</tt>
+  # <tt>-padleft size</tt>:: <tt>ffmpeg.pad_left = size</tt>
+  # <tt>-padright size</tt>:: <tt>ffmpeg.pad_right = size</tt>
+  # <tt>-padcolor color</tt>:: <tt>ffmpeg.pad_color = '000000'</tt>
+  # <tt>-vn</tt>:: <tt>ffmpeg.disable_video = true</tt>
+  # <tt>-vcodec codec</tt>:: <tt>ffmpeg.video_codec = codec</tt>
+  # <tt>-sameq</tt>:: <tt>ffmpeg.preserve_video_quality = true</tt>
+  # <tt>-pass n</tt>:: <tt>ffmpeg.pass = n</tt>
+  # <tt>-passlogfile file</tt>:: <tt>ffmpeg.pass_log_file = 'file'</tt>
+  # <tt>-newvideo</tt>:: <tt>ffmpeg.new_video_stream = true</tt>
+  # 
   class FFmpegTask < RProgram::Task
 
     # Main options
