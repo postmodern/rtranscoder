@@ -3,9 +3,7 @@ require 'rtranscoder/ffmpeg'
 include RTranscoder
 
 #
-# Encodes a video to FLV.
-# Equivalent to:
-#   $ ffmpeg -i video.avi -ar 22050 -ab 32 -f flv -s 320x240 video.flv
+# Encode an video to FLV.
 #
 FFmpeg.encode do |ffmpeg|
   ffmpeg.input = 'video.avi'
@@ -15,3 +13,8 @@ FFmpeg.encode do |ffmpeg|
   ffmpeg.output_format = :flv
   ffmpeg.output = 'video.flv'
 end
+
+#
+# Equivalent to:
+#   $ ffmpeg -i video.avi -ar 22050 -ab 32 -f flv -s 320x240 video.flv
+#

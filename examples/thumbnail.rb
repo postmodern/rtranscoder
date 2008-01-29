@@ -3,10 +3,7 @@ require 'rtranscoder/ffmpeg'
 include RTranscoder
 
 #
-# Extracts a frame at 00:00:03.
-# Equivlanent to:
-#   $ ffmpeg -i video.flv -an -ss 00:00:03 -t 00:00:01 -r 1 -y -s 320x240
-#     video_thumbnail.jpg
+# Extracts frame starting at 00:00:03 for 00:00:01.
 #
 FFmpeg.encode do |ffmpeg|
   ffmpeg.input = 'video.flv'
@@ -16,7 +13,7 @@ FFmpeg.encode do |ffmpeg|
   ffmpeg.fps = 1
   ffmpeg.overwrite_output_files = true
   ffmpeg.video_frame_size = '320x240'
-  ffmpeg.output = 'video_thumbnail%d.jpg'
+  ffmpeg.output = 'video_thumbnail_%d.jpg'
 end
 
 #
@@ -27,4 +24,10 @@ RTranscoder.thumbnail(:video => 'video.flv',
                       :length => '00:00:01',
                       :width => 320,
                       :height => 240,
-                      :image => 'thumb%d.jpg')
+                      :image => 'video_thumbnail_%d.jpg')
+
+#
+# Both equivalent to:
+#   $ ffmpeg -i video.flv -an -ss 00:00:03 -t 00:00:01 -r 1 -y \
+#     -s 320x240 video_thumbnail_%d.jpg
+#
