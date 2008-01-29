@@ -103,7 +103,7 @@ to Ruby classes and methods for your convenience.
 			  :height => 240,
 			  :image => 'video_thumbnail_%d.jpg')
 
-  Both equivalent to:
+  Both are equivalent to:
 
       $ ffmpeg -i video.flv -an -ss 00:00:03 -t 00:00:01 -r 1 -y \
         -s 320x240 video_thumbnail_%d.jpg
