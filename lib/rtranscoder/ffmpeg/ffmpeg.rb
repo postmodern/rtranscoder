@@ -1,5 +1,4 @@
 require 'rtranscoder/ffmpeg/ffmpeg_task'
-require 'rtranscoder/ffmpeg/extensions'
 require 'rtranscoder/extensions'
 
 require 'rprogram/program'
