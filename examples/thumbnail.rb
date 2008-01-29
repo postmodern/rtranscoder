@@ -3,7 +3,7 @@ require 'rtranscoder/ffmpeg'
 include RTranscoder
 
 #
-# Extracts frame starting at 00:00:03 for 00:00:01.
+# Extract frames starting at 00:00:03 for 00:00:01.
 #
 FFmpeg.encode do |ffmpeg|
   ffmpeg.input = 'video.flv'

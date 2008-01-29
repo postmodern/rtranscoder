@@ -75,7 +75,7 @@ to Ruby classes and methods for your convenience.
     $ mencoder input.avi -o output.mp4 -queit -ovc x264 -x264encopts \
       bitrate=3000:nr=2000 -oac faac -faacopts br=32:tns
 
-* Extracts frame starting at 00:00:03 for 00:00:01.
+* Extract frames starting at 00:00:03 for 00:00:01.
 
     require 'rtranscoder/ffmpeg'
 
