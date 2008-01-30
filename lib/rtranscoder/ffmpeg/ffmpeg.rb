@@ -35,7 +35,7 @@ module RTranscoder
     # _block_ using FFmpegTask.
     #
     def encode(options={},&block)
-      run_with_task(FFmpegTask.new(options,&block))
+      run_task(FFmpegTask.new(options,&block))
     end
 
     #

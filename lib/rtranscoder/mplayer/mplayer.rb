@@ -28,7 +28,7 @@ module RTranscoder
     # _block_ using MPlayerTask.
     #
     def play(options={},&block)
-      run_with_task(MPlayerTask.new(options,&block))
+      run_task(MPlayerTask.new(options,&block))
     end
 
   end

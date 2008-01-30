@@ -28,7 +28,7 @@ module RTranscoder
     # _block_ with MEncoderTask.
     #
     def encode(options={},&block)
-      run_with_task(MEncoderTask.new(options,&block))
+      run_task(MEncoderTask.new(options,&block))
     end
 
   end
