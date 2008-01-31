@@ -21,14 +21,14 @@ module RTranscoder
       # See MP4Creator#create.
       #
       def self.create(options={},&block)
-        self.find.play(options,&block)
+        self.find.create(options,&block)
       end
 
       #
       # See MP4Creator#mux.
       #
-      def self.mux(audio,video,output)
-        self.find.mux(audio,video,output)
+      def self.mux(options={})
+        self.find.mux(options)
       end
 
       #
@@ -59,25 +59,25 @@ module RTranscoder
         end
 
         create do |mp4creator|
-          mp4creator.create = output[:video]
-          mp4creator.rate = output[:frame_rate].to_f
-          mp4creator.file = output[:output]
+          mp4creator.create = options[:video]
+          mp4creator.rate = options[:frame_rate].to_f
+          mp4creator.file = options[:output]
         end
 
-        if output[:hint]
+        if options[:hint]
           create do |mp4creator|
             mp4creator.hint = 1
-            mp4creator.file = output[:output]
+            mp4creator.file = options[:output]
           end
 
           create do |mp4creator|
             mp4creator.hint = 2
-            mp4creator.file = output[:output]
+            mp4creator.file = options[:output]
           end
 
           create do |mp4creator|
             mp4creator.optimize = true
-            mp4creator.file = output[:output]
+            mp4creator.file = options[:output]
           end
         end
       end
