@@ -113,7 +113,7 @@ module RTranscoder
     protected
 
     def self.sub_options(opts={})
-      long_option :flag => opts[:flag], :name => opts[:name], :separator => ':', :sub_options => true
+      long_option :flag => opts[:flag], :name => opts[:name], :separator => ',', :sub_options => true
     end
 
     def self.priority_list(opts={})
