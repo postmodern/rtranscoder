@@ -1,3 +1,5 @@
+require 'rprogram/rprogram'
+
 module RTranscoder
   def RTranscoder.debug
     RProgram.debug
