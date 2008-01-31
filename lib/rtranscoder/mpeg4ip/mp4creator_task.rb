@@ -21,6 +21,8 @@ module RTranscoder
       long_option :flag => '-verbosity', :equals => true
       long_option :flag => '-help'
 
+      non_option :tailing => true, :name => :file
+
     end
   end
 end
