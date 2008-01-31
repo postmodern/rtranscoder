@@ -18,18 +18,68 @@ module RTranscoder
       end
 
       #
-      # See MP4Creator#play.
+      # See MP4Creator#create.
       #
-      def self.play(options={},&block)
+      def self.create(options={},&block)
         self.find.play(options,&block)
+      end
+
+      #
+      # See MP4Creator#mux.
+      #
+      def self.mux(audio,video,output)
+        self.find.mux(audio,video,output)
       end
 
       #
       # Runs the +mp4creator+ program with the given _options_ and the given
       # _block_ using MP4CreatorTask.
       #
-      def play(options={},&block)
+      def create(options={},&block)
         run_task(MP4CreatorTask.new(options,&block))
+      end
+
+      #
+      # Muxes audio and video streams together with the specified _options_.
+      #
+      # _options_ must contain the following keys:
+      # <tt>:audio</tt>:: The audio file to add.
+      # <tt>:video</tt>:: The video file to add.
+      # <tt>:frame_rate</tt>:: The frame rate of the video stream.
+      # <tt>:output</tt>:: The output file.
+      #
+      # _options_ may contain the following key:
+      # <tt>:hint</tt>:: Specifies wether to add hints for QuickTime plugins
+      #                  to the output file.
+      #
+      def mux(options={})
+        create do |mp4creator|
+          mp4creator.create = options[:audio]
+          mp4creator.file = options[:output]
+        end
+
+        create do |mp4creator|
+          mp4creator.create = output[:video]
+          mp4creator.rate = output[:frame_rate].to_f
+          mp4creator.file = output[:output]
+        end
+
+        if output[:hint]
+          create do |mp4creator|
+            mp4creator.hint = 1
+            mp4creator.file = output[:output]
+          end
+
+          create do |mp4creator|
+            mp4creator.hint = 2
+            mp4creator.file = output[:output]
+          end
+
+          create do |mp4creator|
+            mp4creator.optimize = true
+            mp4creator.file = output[:output]
+          end
+        end
       end
 
     end
