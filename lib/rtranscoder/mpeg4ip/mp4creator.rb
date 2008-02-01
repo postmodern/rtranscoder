@@ -53,6 +53,10 @@ module RTranscoder
       #                  to the output file.
       #
       def mux(options={})
+        if File.file?(options[:output])
+          File.delete(options[:output])
+        end
+
         create do |mp4creator|
           mp4creator.create = options[:audio]
           mp4creator.file = options[:output]
