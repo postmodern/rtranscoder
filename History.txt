@@ -1,3 +1,9 @@
+== 0.1.3 / 2008-01-30
+
+* MPlayer sub-options must use a ',' as their separator.
+* Added MPEG4IP support.
+  * Currently supports mp4creator.
+
 == 0.1.2 / 2008-01-29
 
 * Replaces 'run_with_task' method calls with 'run_task', as that is the
