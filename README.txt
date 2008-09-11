@@ -1,6 +1,6 @@
 = RTranscoder
 
-* http://rubyforge.org/projects/rtranscoder/
+* http://rtranscoder.rubyforge.org/
 * Hal Brodigan (hal.brodigan@gmail.com)
 
 == DESCRIPTION:
