@@ -1,7 +1,7 @@
 = RTranscoder
 
 * http://rtranscoder.rubyforge.org/
-* Hal Brodigan (hal.brodigan@gmail.com)
+* Postmodern (postmodern.mod3 at gmail.com)
 
 == DESCRIPTION:
   
@@ -22,6 +22,8 @@ to Ruby classes and methods for your convenience.
 == REQUIREMENTS:
 
 * RProgram
+
+== EXAMPLES:
 
 == INSTALL:
 
