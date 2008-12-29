@@ -23,4 +23,3 @@ lib/rtranscoder/mpeg4ip/mp4creator.rb
 lib/rtranscoder/mpeg4ip/mp4creator_task.rb
 lib/rtranscoder/mpeg4ip.rb
 lib/rtranscoder/rtranscoder.rb
-test/test_rtranscoder.rb
