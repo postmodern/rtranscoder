@@ -3,6 +3,7 @@
 * MPlayer sub-options must use a ',' as their separator.
 * Added MPEG4IP support.
   * Currently supports mp4creator.
+  * Added documentation for mp4creator options.
 
 == 0.1.2 / 2008-01-29
 
