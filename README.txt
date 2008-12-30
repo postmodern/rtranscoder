@@ -23,8 +23,6 @@ to Ruby classes and methods for your convenience.
 
 * RProgram
 
-== EXAMPLES:
-
 == INSTALL:
 
   $ sudo gem install rtranscoder
