@@ -2,7 +2,7 @@ require 'rprogram/task'
 
 module RTranscoder
   #
-  # MPlayer Common options:
+  # == MPlayer Common options:
   #
   # <tt>-lavdopts</tt>:: <tt>mplayer.libavcodec</tt>
   # <tt>-field-dominance</tt>:: <tt>mplayer.field_dominance</tt>
@@ -108,6 +108,7 @@ module RTranscoder
   # <tt>-fps</tt>:: <tt>mplayer.fps</tt>
   # <tt>-priority</tt>:: <tt>mplayer.priority</tt>
   # <tt>-use-filedir-conf</tt>:: <tt>mplayer.use_filedir_conf</tt>
+  #
   class MPlayerCommonTask < RProgram::Task
 
     protected

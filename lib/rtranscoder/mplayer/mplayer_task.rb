@@ -2,7 +2,7 @@ require 'rtranscoder/mplayer/mplayer_common_task'
 
 module RTranscoder
   #
-  # ==MPlayer options:
+  # == MPlayer options:
   #
   # <tt>-screenw</tt>:: <tt>mplayer.horizontal_resolution</tt>
   # <tt>-dr</tt>:: <tt>mplayer.enable_direct_rendering</tt>
@@ -100,6 +100,7 @@ module RTranscoder
   # <tt>-fstype</tt>:: <tt>mplayer.fs_type</tt>
   # <tt>-idle</tt>:: <tt>mplayer.idle</tt>
   # <tt>-softsleep</tt>:: <tt>mplayer.soft_sleep</tt>
+  # <tt>{file|URL|playlist}</tt>:: <tt>mplayer.media</tt>
   #
   class MPlayerTask < MPlayerCommonTask
 
