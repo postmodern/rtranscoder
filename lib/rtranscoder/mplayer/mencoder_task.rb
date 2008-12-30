@@ -37,6 +37,7 @@ module RTranscoder
   # <tt>-x264encopts</tt>:: <tt>mencoder.x264enc</tt>
   # <tt>-vobsuboutid</tt>:: <tt>mencoder.vob_output_subtitle_language</tt>
   # <tt>-noautoexpand</tt>:: <tt>mencoder.disable_auto_expand</tt>
+  # <tt>INPUT</tt>:: <tt>mencoder.input</tt>
   #
   class MEncoderTask < MPlayerCommonTask
 
@@ -84,8 +85,6 @@ module RTranscoder
     codec_options :lavf
 
     non_option :tailing => true, :name => :input
-    non_option :tailing => true, :name => :output_file
-    non_option :tailing => true, :name => :smb_output
 
   end
 end
