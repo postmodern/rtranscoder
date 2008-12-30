@@ -21,7 +21,7 @@ to Ruby classes and methods for your convenience.
 
 == REQUIREMENTS:
 
-* RProgram
+* RProgram >= 0.1.3
 
 == INSTALL:
 
